@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "938120374632",
+    "firebase_url": "https://trainapplication-gifty-default-rtdb.firebaseio.com",
+    "project_id": "trainapplication-gifty",
+    "storage_bucket": "trainapplication-gifty.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938120374632:android:0d4d7960d90318bd3acedd",
+        "android_client_info": {
+          "package_name": "com.example.trainapplication_gifty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938120374632-pb84st0jd632gqpvdtavhe6uk1ablfqb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuJO8NUhr2-pNxNZcpXmdR8ut5RZB1E3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938120374632-pb84st0jd632gqpvdtavhe6uk1ablfqb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

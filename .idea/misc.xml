@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/button_color_change.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/corner.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/corner_button.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/corner_plaintexts.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/ic_baseline_delete_25.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/ic_baseline_edit_25.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_edit_item.xml" value="0.264" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_login.xml" value="0.18697916666666667" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.2006340579710145" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_shop_items.xml" value="0.264" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_shop_navigation.xml" value="0.2046875" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_sign_up_shop.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_sign_up_user.xml" value="0.1" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_type.xml" value="0.2" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/activity_user_navigation.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/app_bar_shop_navigation.xml" value="0.2046875" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/app_bar_user_navigation.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/cart_item.xml" value="0.4" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/category_item.xml" value="0.23854166666666668" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/content_shop_navigation.xml" value="0.2046875" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/content_user_navigation.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_add_item.xml" value="0.2" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_category_item.xml" value="0.22447916666666667" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_category_selection.xml" value="0.25416666666666665" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_gallery.xml" value="0.2" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_home.xml" value="0.2046875" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_logout.xml" value="0.14114583333333333" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_shop_store.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/fragment_slideshow.xml" value="0.2046875" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/gallery_item_view.xml" value="0.264" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/grid_view_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/nav_header_shop_navigation.xml" value="0.2046875" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/nav_header_user_navigation.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/product_item.xml" value="0.23854166666666668" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/product_order_popupwindow.xml" value="0.23854166666666668" />
+        <entry key="..\:/MyApplication2/app/src/main/res/layout/shop_item_view.xml" value="0.2" />
+        <entry key="..\:/MyApplication2/app/src/main/res/menu/activity_main_drawer.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/menu/activity_shop_navigation_drawer.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/menu/shop_navigation.xml" value="0.15520833333333334" />
+        <entry key="..\:/MyApplication2/app/src/main/res/menu/user_navigation.xml" value="0.15520833333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

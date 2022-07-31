@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Gifty</string>
+    <string name="title_activity_shop_navigation">ShopNavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Welcome to Gifty</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="add_item">Add Item</string>
+    <string name="shop_store">Our store</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_user_navigation">UserNavigationActivity</string>
+    <string name="menu_gallery">Cart</string>
+    <string name="menu_slideshow">History</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

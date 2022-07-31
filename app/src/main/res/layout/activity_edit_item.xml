@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".Edit_Item_Activity">
+
+    <ImageView
+        android:id="@+id/edit_item_Image"
+        android:layout_width="236dp"
+        android:layout_height="182dp"
+        android:layout_marginTop="80dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_itemName"
+        android:layout_width="301dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="24dp"
+        android:width="300dp"
+        android:background="@drawable/corner_plaintexts"
+        android:ems="10"
+        android:drawablePadding="10dp"
+        android:paddingLeft="15dp"
+        android:hint="  Item Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_itemPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_itemPrice"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="24dp"
+        android:width="300dp"
+        android:background="@drawable/corner_plaintexts"
+        android:ems="10"
+        android:drawablePadding="10dp"
+        android:paddingLeft="15dp"
+        android:hint=" Item Price"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_itemQuantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_itemQuantity"
+        android:layout_width="306dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="24dp"
+        android:width="300dp"
+        android:background="@drawable/corner_plaintexts"
+        android:ems="10"
+        android:drawablePadding="10dp"
+        android:paddingLeft="15dp"
+        android:hint="  Item Quantity"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_itemCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_itemCategory"
+        android:layout_width="303dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="24dp"
+        android:width="300dp"
+        android:background="@drawable/corner_plaintexts"
+        android:ems="10"
+        android:drawablePadding="10dp"
+        android:paddingLeft="15dp"
+        android:hint="  Item category"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_itemDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_itemDescription"
+        android:layout_width="304dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="44dp"
+        android:width="300dp"
+        android:background="@drawable/corner_plaintexts"
+        android:ems="10"
+        android:drawablePadding="10dp"
+        android:paddingLeft="15dp"
+        android:hint="  Item Description"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/update_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/update_item"
+        android:layout_width="131dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_color_change"
+        android:fontFamily="sans-serif-medium"
+        android:text="Update"
+        android:textColor="#F3EBEB"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_item"
+        android:layout_width="235dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="76dp"
+        android:background="@android:color/transparent"
+        android:textColor="#131313"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
