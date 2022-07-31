@@ -32,6 +32,10 @@ class UserNavigationActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_user_navigation)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+        /**
+         * Define the fragments used in navigation drawer
+         */
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow

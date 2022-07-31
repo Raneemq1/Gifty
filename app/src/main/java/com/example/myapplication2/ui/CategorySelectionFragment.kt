@@ -50,6 +50,7 @@ class CategorySelectionFragment : Fragment() {
         val root: View = binding.root
         categoryGRV = root.findViewById(R.id.idGRV)
         categoryList = ArrayList<Category>()
+
         if (shop_email_login.isEmpty()) {
             email = shop_email_signup
         } else {

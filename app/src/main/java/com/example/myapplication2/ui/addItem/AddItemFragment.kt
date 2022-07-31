@@ -24,23 +24,30 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.*
 
+/**
+ * This fragment displays items details to store it in the realtime database
+ */
 class AddItemFragment : Fragment() {
 
     private var _binding: FragmentAddItemBinding? = null
 
-    //This is the content type of image
     lateinit var ImageUri: Uri
     lateinit var image: ImageView
+
+    // This variable is used to check if the image button is clicked
     var pressed: Int = 0
 
+    //These variables used to save the email of shop by taking an instance of these static variables
     private var shop_email_login: String = LoginActivity.shop_email
     private var shop_email_signup: String = SignUpShopActivity.shop_email
     private lateinit var email: String
 
 
     //This instance of firebase storage to save images
-    private var firebaseStore: FirebaseStorage? = null
     private var mStoarge: StorageReference? = null
+
+    private var firebaseStore: FirebaseStorage? = null
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -58,6 +65,9 @@ class AddItemFragment : Fragment() {
         _binding = FragmentAddItemBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        /**
+        Declare all widgets for adding item to firebase
+         */
         val btn = root.findViewById<Button>(R.id.update_item)
         val select = root.findViewById<Button>(R.id.edit_item)
         val itemName = root.findViewById<EditText>(R.id.edit_itemName)
@@ -66,6 +76,8 @@ class AddItemFragment : Fragment() {
         val itemCategory = root.findViewById<EditText>(R.id.edit_itemCategory)
         val itemDescription = root.findViewById<EditText>(R.id.edit_itemDescription)
         image = root.findViewById<ImageView>(R.id.edit_item_image)
+
+        // Save the email of shop by comparing the entry email from login and signup activity
         if (shop_email_login.isEmpty()) {
             email = shop_email_signup
         } else {
@@ -105,7 +117,9 @@ class AddItemFragment : Fragment() {
                     filepath?.putFile(ImageUri)?.addOnSuccessListener {
 
                     }
-
+                    /**
+                     * Create table called Items to save products details
+                     */
                     var myDatabase = FirebaseDatabase.getInstance().getReference("Items")
                     val idItem = myDatabase.push().key.toString()
                     val item = Item(

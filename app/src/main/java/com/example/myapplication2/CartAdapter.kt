@@ -19,9 +19,10 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
     RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     companion object {
         @JvmStatic
-         var totalPrice: Int = 0
+        var totalPrice: Int = 0
 
     }
+
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val cartAdd: Button = view.findViewById(R.id.cart_add)
@@ -78,12 +79,39 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
         holder.cartQuantity.setText(currentItem.requestedQuantity.toString())
 
         holder.cartAdd.setOnClickListener {
-            //holder.
+            var quantity = Integer.parseInt(holder.cartQuantity.text.toString())
+            quantity++
+
+            holder.cartQuantity.setText(quantity.toString())
+            val editableCart =
+                Cart(currentItem.id, currentItem.userEmail, quantity, currentItem.itemId)
+            val ref1 = FirebaseDatabase.getInstance().getReference("Cart")
+            ref1.child(currentItem.id).setValue(editableCart).addOnCompleteListener {
+
+            }
+
         }
         holder.cartSub.setOnClickListener {
+            var quantity = Integer.parseInt(holder.cartQuantity.text.toString())
+            if (quantity > 0) {
+                quantity--
+            } else {
+                quantity = 0
+            }
+            holder.cartQuantity.setText(quantity.toString())
+            val editableCart =
+                Cart(currentItem.id, currentItem.userEmail, quantity, currentItem.itemId)
+            val ref1 = FirebaseDatabase.getInstance().getReference("Cart")
+            ref1.child(currentItem.id).setValue(editableCart).addOnCompleteListener {
+
+            }
+
 
         }
         holder.cartDelete.setOnClickListener {
+            var ref = FirebaseDatabase.getInstance().getReference("Cart")
+            ref.child(currentItem.id).removeValue()
+
 
         }
 

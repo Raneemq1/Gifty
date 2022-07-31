@@ -17,13 +17,18 @@ import com.example.myapplication2.model.Item
 import com.example.myapplication2.model.Shop
 import com.google.firebase.database.*
 
+/**
+ * This fragment displays shops information
+ */
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
+    //Define item adapter and recycler view to show the added itms in the cart
     private lateinit var shop_adapter: Shops_RV_Adapter
     private lateinit var shop_rv: RecyclerView
     private lateinit var shops_list: ArrayList<Shop>
+
     private lateinit var ref: DatabaseReference
 
     // This property is only valid between onCreateView and
@@ -54,6 +59,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         ref = FirebaseDatabase.getInstance().getReference("Shops")
         shop_rv = view.findViewById(R.id.shops_rv)
         shop_rv.layoutManager = LinearLayoutManager(context)
@@ -63,11 +69,13 @@ class HomeFragment : Fragment() {
 
     }
 
-
+    /**
+     * This function unreturned type of function
+     * Read elements from Shop table in a realtime firebase
+     */
     private fun prepareData() {
-        /*Retrive data from firebase as login */
-        shops_list = arrayListOf<Shop>()
 
+        shops_list = arrayListOf<Shop>()
 
         ref.addValueEventListener(object : ValueEventListener {
 
@@ -76,7 +84,7 @@ class HomeFragment : Fragment() {
                     shops_list.clear()
                     for (u in p.children) {
                         val shop = u.getValue(Shop::class.java)
-                        shops_list.add(shop!!)
+                        shops_list.add(shop!!) // add shop object information to shop arraylist
 
                     }
                     shop_adapter = Shops_RV_Adapter(shops_list)

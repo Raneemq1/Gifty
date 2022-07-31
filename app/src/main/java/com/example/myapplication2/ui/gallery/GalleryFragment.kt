@@ -13,13 +13,16 @@ import com.example.myapplication2.*
 import com.example.myapplication2.R
 import com.example.myapplication2.databinding.FragmentGalleryBinding
 import com.example.myapplication2.model.Cart
-import com.example.myapplication2.model.Item
 import com.google.firebase.database.*
 
+/**
+ * This fragment displays cart fragment by showing the added items in a recycler view
+ */
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
 
+    //
     private lateinit var cart_adapter: CartAdapter
     private lateinit var cart_items_rv: RecyclerView
     private lateinit var cart_items_list: ArrayList<Cart>
@@ -91,7 +94,7 @@ class GalleryFragment : Fragment() {
 
                     cart_adapter=CartAdapter(cart_items_list)
                     cart_items_rv.adapter=cart_adapter
-                    total.setText(CartAdapter.totalPrice.toString())
+                    total.setText("Total price = "+CartAdapter.totalPrice.toString())
                     CartAdapter.totalPrice=0
 
                 }

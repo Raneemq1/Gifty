@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Button
 
+/**
+ * This activity uses to determine the type of the entry user
+ */
 class TypeActivity : AppCompatActivity() {
 
     lateinit var shopSignup: Button

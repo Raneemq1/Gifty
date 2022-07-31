@@ -36,7 +36,9 @@ class LogoutFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        /**
+         * Use intent for returning back to the login screen
+         */
         val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
 

@@ -18,10 +18,14 @@ import com.example.myapplication2.databinding.FragmentShopStoreBinding
 import com.example.myapplication2.model.Item
 import com.google.firebase.database.*
 
+/**
+ * This fragment shows the items for each shop to edit item information or delete it
+ */
 class StoreShopFragment : Fragment() {
 
 
     private var _binding: FragmentShopStoreBinding? = null
+
     private lateinit var item_adapter: Item_Gallery_RV
     private lateinit var item_rv: RecyclerView
     private lateinit var items_list: ArrayList<Item>

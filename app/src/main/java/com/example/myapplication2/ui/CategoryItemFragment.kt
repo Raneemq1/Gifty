@@ -12,7 +12,9 @@ import com.example.myapplication2.databinding.FragmentCategoryItemBinding
 import com.example.myapplication2.databinding.FragmentCategorySelectionBinding
 import com.example.myapplication2.ui.addItem.AddItemFragment
 
-
+/**
+ * This fragment is a blank fragment that starts categories selection fragment
+ */
 class CategoryItemFragment : Fragment() {
 
     private var _binding: FragmentCategoryItemBinding? = null
