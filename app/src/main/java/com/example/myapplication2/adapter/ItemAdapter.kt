@@ -1,4 +1,4 @@
-package com.example.myapplication2
+package com.example.myapplication2.adapter
 
 import android.app.AlertDialog
 import android.content.Context
@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.example.myapplication2.LoginActivity
+import com.example.myapplication2.R
+import com.example.myapplication2.SignUpUserActivity
 import com.example.myapplication2.model.Cart
 import com.example.myapplication2.model.Item
 import com.google.firebase.database.FirebaseDatabase
@@ -119,6 +121,11 @@ class ItemAdapter(private val itemlists: ArrayList<Item>) :
             mAlertDialog.dismiss()
         }
 
+        /**
+         * Check the entry email is a shop or user
+         * If shop doesn't allow to add items into cart
+         * Allow normal users to add items into the cart after deciding the quantity nedded
+         */
         add_to_cart.setOnClickListener{
             if(email.isEmpty()){
                 Toast.makeText(context,"Please make a user account to join shopping with us",Toast.LENGTH_SHORT).show()
@@ -126,8 +133,8 @@ class ItemAdapter(private val itemlists: ArrayList<Item>) :
             else {
                 var database = FirebaseDatabase.getInstance().getReference("Cart")
                 val cartId = database.push().key.toString()
-
                 val cart=Cart(cartId,email,Integer.parseInt(txt_quantity.text.toString()),currentItem.id)
+                //Store cart item information in the firebase
                 database.child(cartId).setValue(cart).addOnCompleteListener{
                     Toast.makeText(context,"Moved to your cart",Toast.LENGTH_SHORT).show()
 

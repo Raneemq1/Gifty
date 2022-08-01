@@ -1,4 +1,4 @@
-package com.example.myapplication2
+package com.example.myapplication2.adapter
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication2.R
+import com.example.myapplication2.ShopItemsActivity
 import com.example.myapplication2.model.Category
 
 class CategoryAdapter(private val catgoryList: ArrayList<Category>) :
@@ -42,6 +44,8 @@ class CategoryAdapter(private val catgoryList: ArrayList<Category>) :
             holder.linearLayout.setBackgroundColor(R.color.pressedColor)
 
             val intent = Intent(holder.itemView.context, ShopItemsActivity::class.java)
+
+            //Reopen the same activity with a light transition when any of the categories is pressed
             intent.putExtra("category", currentCategory)
             holder.itemView.context.startActivity(
                 intent,

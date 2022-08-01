@@ -1,4 +1,4 @@
-package com.example.myapplication2
+package com.example.myapplication2.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapplication2.R
 import com.example.myapplication2.model.Cart
 import com.example.myapplication2.model.Item
 import com.google.firebase.database.*
@@ -64,7 +64,7 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
                                         .into(holder.cartImg)
                                 }
                             holder.cartPrice.setText(((item?.price)?.times((currentItem.requestedQuantity))).toString())
-                            totalPrice += Integer.parseInt(holder.cartPrice.text.toString())
+                            totalPrice += Integer.parseInt(holder.cartPrice.text.toString())//Add item price to total price
 
                         }
                     }
@@ -93,6 +93,7 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
         }
         holder.cartSub.setOnClickListener {
             var quantity = Integer.parseInt(holder.cartQuantity.text.toString())
+            //Check the value of quantity doesn't equal zero to continue subtracting
             if (quantity > 0) {
                 quantity--
             } else {
@@ -108,6 +109,7 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
 
 
         }
+        // remove item from firebase
         holder.cartDelete.setOnClickListener {
             var ref = FirebaseDatabase.getInstance().getReference("Cart")
             ref.child(currentItem.id).removeValue()

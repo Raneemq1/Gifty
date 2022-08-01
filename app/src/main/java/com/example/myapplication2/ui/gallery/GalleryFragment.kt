@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication2.*
 import com.example.myapplication2.R
+import com.example.myapplication2.adapter.CartAdapter
 import com.example.myapplication2.databinding.FragmentGalleryBinding
 import com.example.myapplication2.model.Cart
 import com.google.firebase.database.*
@@ -92,9 +93,9 @@ class GalleryFragment : Fragment() {
                         }
                     }
 
-                    cart_adapter=CartAdapter(cart_items_list)
+                    cart_adapter= CartAdapter(cart_items_list)
                     cart_items_rv.adapter=cart_adapter
-                    total.setText("Total price = "+CartAdapter.totalPrice.toString())
+                    total.setText("Total price = "+ CartAdapter.totalPrice.toString())
                     CartAdapter.totalPrice=0
 
                 }

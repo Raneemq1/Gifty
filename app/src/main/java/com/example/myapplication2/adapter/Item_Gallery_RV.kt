@@ -1,21 +1,17 @@
-package com.example.myapplication2
+package com.example.myapplication2.adapter
 
-import android.app.PendingIntent.getActivity
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.net.toFile
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapplication2.Edit_Item_Activity
+import com.example.myapplication2.R
 import com.example.myapplication2.model.Item
-import com.example.myapplication2.model.Shop
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 
@@ -49,7 +45,7 @@ class Item_Gallery_RV(private val itemList: ArrayList<Item>) :
 
         sRef.child(currentItem.pathImage.toString()).downloadUrl
             .addOnSuccessListener { url ->
-                // do whatever with your url
+                // Get the url path
                 path = url.toString()
                 Glide.with(holder.itemView.context).load(path).centerCrop().into(holder.itemImage)
             }
@@ -60,7 +56,7 @@ class Item_Gallery_RV(private val itemList: ArrayList<Item>) :
 
 
         holder.itemEditBtn.setOnClickListener {
-            /*go to activity with displaying all info */
+            /*Transfer to edit activity for displaying all item information to allow edit them*/
             holder.itemEditBtn.setImageResource(R.drawable.ic_baseline_edit_25)
             val intent = Intent(holder.itemView.context, Edit_Item_Activity::class.java)
             intent.putExtra("itemDetails", currentItem.id)

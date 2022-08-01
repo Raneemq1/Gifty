@@ -1,4 +1,4 @@
-package com.example.myapplication2
+package com.example.myapplication2.adapter
 
 import android.content.Intent
 import android.net.Uri
@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication2.R
+import com.example.myapplication2.ShopItemsActivity
 import com.example.myapplication2.model.Shop
 
 class Shops_RV_Adapter(private val shopsList: ArrayList<Shop>) :
     RecyclerView.Adapter<Shops_RV_Adapter.ViewHolder>() {
 
-
+    //Static variable to use it from different classes
     companion object {
         @JvmStatic
         var shop_name: String = ""
@@ -33,17 +35,19 @@ class Shops_RV_Adapter(private val shopsList: ArrayList<Shop>) :
 
         holder.itemView.setOnClickListener {
 
-
+            //Display shop categories and items when pressed on the shop card info
             val intent = Intent(holder.itemView.context, ShopItemsActivity::class.java)
             shop_name = currentShop.name
             holder.itemView.context.startActivity(intent)
 
         }
+        //Open a phone dial when pressed on phone icon
         holder.shopPhoneIcon.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:+97" + currentShop.phone))
             holder.itemView.context.startActivity(intent)
         }
 
+        //Open a google map when pressed on check in icon
         holder.shopLocationIcon.setOnClickListener {
             var gmmIntentUri = Uri.parse("geo:0,0?q=");
             var mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri);

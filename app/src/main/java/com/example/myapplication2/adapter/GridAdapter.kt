@@ -1,4 +1,4 @@
-package com.example.myapplication2
+package com.example.myapplication2.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.myapplication2.R
 import com.example.myapplication2.model.Category
 
 class GridAdapter(private val categoryList: List<Category>, private val context: Context) :
@@ -47,13 +48,13 @@ class GridAdapter(private val categoryList: List<Category>, private val context:
             // which we have to inflate for each item of grid view.
             convertView = layoutInflater!!.inflate(R.layout.grid_view_item, null)
         }
-        // on below line we are initializing our course image view
-        // and course text view with their ids.
+        // on below line we are initializing our category image view
+        // and category text view with their ids.
         categoryIV = convertView!!.findViewById(R.id.idIVCourse)
         categoryTV = convertView!!.findViewById(R.id.idTVCourse)
-        // on below line we are setting image for our course image view.
+        // on below line we are setting image for our category image view.
         categoryIV.setImageResource(categoryList.get(position).categoryImg)
-        // on below line we are setting text in our course text view.
+        // on below line we are setting text in our category text view.
         categoryTV.setText(categoryList.get(position).categoryName)
         // at last we are returning our convert view.
         return convertView

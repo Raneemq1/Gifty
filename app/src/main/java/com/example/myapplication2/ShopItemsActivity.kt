@@ -6,6 +6,9 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication2.adapter.CategoryAdapter
+import com.example.myapplication2.adapter.ItemAdapter
+import com.example.myapplication2.adapter.Shops_RV_Adapter
 import com.example.myapplication2.model.Category
 import com.example.myapplication2.model.Item
 import com.example.myapplication2.model.Shop

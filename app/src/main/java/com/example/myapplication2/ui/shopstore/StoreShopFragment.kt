@@ -1,16 +1,14 @@
 package com.example.myapplication2.ui.shopstore
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication2.Item_Gallery_RV
+import com.example.myapplication2.adapter.Item_Gallery_RV
 import com.example.myapplication2.LoginActivity
 import com.example.myapplication2.R
 import com.example.myapplication2.SignUpShopActivity
