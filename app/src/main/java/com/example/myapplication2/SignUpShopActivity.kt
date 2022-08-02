@@ -28,7 +28,7 @@ class SignUpShopActivity : AppCompatActivity() {
     private lateinit var shopPassword: EditText
     private lateinit var shopConfirmPassword: EditText
     private lateinit var signup: Button
-    private lateinit var txt: TextView
+    private lateinit var categoriestxt: TextView
     lateinit var categorySelected: BooleanArray
     private lateinit var categoryList: ArrayList<Int>
     private val categoryArray = arrayOf(
@@ -60,14 +60,14 @@ class SignUpShopActivity : AppCompatActivity() {
         shopEmail = findViewById(R.id.text_shopEmail)
         shopPassword = findViewById(R.id.text_shopPassword)
         shopConfirmPassword = findViewById(R.id.text_shopConfirmPassword)
-        txt = findViewById(R.id.relate_categories)
+        categoriestxt = findViewById(R.id.relate_categories)
         builder = AlertDialog.Builder(this)
         categorySelected = BooleanArray(categoryArray.size)
         categoryList = ArrayList<Int>()
         categories = ArrayList<String>()
 
 
-        txt.setOnClickListener {
+        categoriestxt.setOnClickListener {
             builder.setTitle("Select related categories");
             // set dialog non cancelable
             builder.setCancelable(false);
@@ -90,13 +90,11 @@ class SignUpShopActivity : AppCompatActivity() {
                     stringBuilder.append(categoryArray[categoryList.get(i)])
                     categories.add(categoryArray[categoryList.get(i)])
                     if (i != categoryList.size - 1) {
-                        // When j value  not equal
-                        // to lang list size - 1
-                        // add comma
+
                         stringBuilder.append(", ")
                     }
                 }
-                txt.setText(stringBuilder.toString())
+                categoriestxt.setText(stringBuilder.toString())
 
 
             })
@@ -110,7 +108,7 @@ class SignUpShopActivity : AppCompatActivity() {
                     // clear language list
                     categoryList.clear();
                     // clear text view value
-                    txt.setText("")
+                    categoriestxt.setText("")
                 }
             })
             builder.show()
@@ -119,12 +117,13 @@ class SignUpShopActivity : AppCompatActivity() {
         signup.setOnClickListener {
             val name = shopName.text.toString()
             val address = shopAddress.text.toString()
-            val category = shopPhone.text.toString()
+            val phone = shopPhone.text.toString()
             val email = shopEmail.text.toString()
             val password = shopPassword.text.toString()
             val confirmPassword = shopConfirmPassword.text.toString()
+            val category=categoriestxt.text.toString()
 
-            if (name.isEmpty() || address.isEmpty() || category.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            if (name.isEmpty() || address.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()||category.isEmpty()) {
                 Toast.makeText(this, "Please fill your information", Toast.LENGTH_LONG).show()
             } else {
                 if (password != confirmPassword) {
@@ -133,7 +132,7 @@ class SignUpShopActivity : AppCompatActivity() {
                     signUp(
                         name.trim(),
                         address.trim(),
-                        category.trim(),
+                        phone.trim(),
                         email.trim(),
                         password.trim()
                     )

@@ -3,6 +3,7 @@ package com.example.myapplication2.ui.addItem
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,6 +84,8 @@ class AddItemFragment : Fragment() {
         } else {
             email = shop_email_login
         }
+        val categorySelection = PreferenceManager.getDefaultSharedPreferences(context).getString("category"," ")
+        itemCategory.setText(categorySelection)
 
         firebaseStore = FirebaseStorage.getInstance()
         mStoarge = FirebaseStorage.getInstance().reference
@@ -92,8 +95,7 @@ class AddItemFragment : Fragment() {
          */
         btn.setOnClickListener {
 
-            if (itemName.text.toString().isEmpty() || itemCategory.text.toString()
-                    .isEmpty() || itemDescription.text.toString()
+            if (itemName.text.toString().isEmpty() || itemDescription.text.toString()
                     .isEmpty() || itemPrice.text.toString()
                     .isEmpty() || itemQuantity.text.toString()
                     .isEmpty() || !itemPrice.text.toString()

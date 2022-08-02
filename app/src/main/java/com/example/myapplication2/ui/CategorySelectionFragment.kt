@@ -2,6 +2,7 @@ package com.example.myapplication2.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -58,6 +59,10 @@ class CategorySelectionFragment : Fragment() {
         categoryGRV.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
 
             //Toast.makeText(context, categoryList[position].categoryName + " selected", Toast.LENGTH_SHORT).show()
+            with(PreferenceManager.getDefaultSharedPreferences(context).edit()){
+                putString("category", categoryDisplayList[position].categoryName)
+                apply()
+            }
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             transaction?.replace(R.id.frameLayout2, AddItemFragment())
             transaction?.commit()

@@ -2,6 +2,8 @@ package com.example.myapplication2.adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.os.Handler
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,15 +16,18 @@ import com.example.myapplication2.R
 import com.example.myapplication2.SignUpUserActivity
 import com.example.myapplication2.model.Cart
 import com.example.myapplication2.model.Item
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 
 class ItemAdapter(private val itemlists: ArrayList<Item>) :
     RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
+    var exist: Int = 0
     var path: String = ""
     var sRef = FirebaseStorage.getInstance().reference
-    var email:String=""
+    var email: String = ""
     private var user_email_login: String = LoginActivity.user_email
     private var user_email_signup: String = SignUpUserActivity.user_email
 
@@ -79,7 +84,7 @@ class ItemAdapter(private val itemlists: ArrayList<Item>) :
         val img = mDialogView.findViewById<ImageView>(R.id.item_img)
         val btn_add = mDialogView.findViewById<ImageButton>(R.id.btn_add)
         val btn_sub = mDialogView.findViewById<ImageButton>(R.id.btn_sub)
-        val add_to_cart=mDialogView.findViewById<Button>(R.id.add_to_cart)
+        val add_to_cart = mDialogView.findViewById<Button>(R.id.add_to_cart)
         val cancel = mDialogView.findViewById<ImageButton>(R.id.cancel)
         val txt_quantity = mDialogView.findViewById<TextView>(R.id.text_quantity)
         val description = mDialogView.findViewById<TextView>(R.id.item_desciption)
@@ -124,26 +129,62 @@ class ItemAdapter(private val itemlists: ArrayList<Item>) :
         /**
          * Check the entry email is a shop or user
          * If shop doesn't allow to add items into cart
-         * Allow normal users to add items into the cart after deciding the quantity nedded
+         * Allow normal users to add items into the cart after deciding the quantity needed
          */
-        add_to_cart.setOnClickListener{
-            if(email.isEmpty()){
-                Toast.makeText(context,"Please make a user account to join shopping with us",Toast.LENGTH_SHORT).show()
-            }
-            else {
+        add_to_cart.setOnClickListener {
+            if (email.isEmpty()) {
+                Toast.makeText(
+                    context,
+                    "Please make a user account to join shopping with us",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+
+
                 var database = FirebaseDatabase.getInstance().getReference("Cart")
-                val cartId = database.push().key.toString()
-                val cart=Cart(cartId,email,Integer.parseInt(txt_quantity.text.toString()),currentItem.id)
-                //Store cart item information in the firebase
-                database.child(cartId).setValue(cart).addOnCompleteListener{
-                    Toast.makeText(context,"Moved to your cart",Toast.LENGTH_SHORT).show()
+                // Test for the existence of certain keys within a DataSnapshot
+var temp:Int=0
+                database.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if (snapshot!!.exists()) {
+                            for (c in snapshot.children) {
+                                val cart = c.getValue(Cart::class.java)
+                                if (cart?.itemId == currentItem.id) {
 
-                }
+                                    temp=0
+                                    break
+                                }
+                                else{
+                                    temp++
+                                }
+
+                            }
+
+
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+
+                })
+
+
+
+                //Add new item to cart
+                /*         val cartId = database.push().key.toString()
+                                val cart = Cart(cartId, email,
+                                Integer.parseInt(txt_quantity.text.toString()), currentItem.id)
+                                //Store cart item information in the firebase
+                                database.child(cartId).setValue(cart).addOnCompleteListener {
+                                    Toast.makeText(context, "Moved to your cart", Toast.LENGTH_SHORT).show()
+                                }*/
+
 
             }
+
 
         }
-
-
     }
+
 }

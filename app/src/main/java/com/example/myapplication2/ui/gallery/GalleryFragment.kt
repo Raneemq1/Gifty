@@ -19,7 +19,7 @@ import com.google.firebase.database.*
 /**
  * This fragment displays cart fragment by showing the added items in a recycler view
  */
-class GalleryFragment : Fragment() {
+class GalleryFragment : Fragment() , CartAdapter.Callbacks {
 
     private var _binding: FragmentGalleryBinding? = null
 
@@ -88,14 +88,13 @@ class GalleryFragment : Fragment() {
                     cart_items_list.clear()
                     for (u in snapshot.children) {
                         val cartItem = u.getValue(Cart::class.java)
-                        if(cartItem?.userEmail.toString().equals(email)){
+                        if(cartItem?.userEmail.toString().equals(email)){ // check request =0
                             cart_items_list.add(cartItem!!)
                         }
                     }
 
-                    cart_adapter= CartAdapter(cart_items_list)
+                    cart_adapter= CartAdapter(cart_items_list,this@GalleryFragment)
                     cart_items_rv.adapter=cart_adapter
-                    total.setText("Total price = "+ CartAdapter.totalPrice.toString())
                     CartAdapter.totalPrice=0
 
                 }
@@ -106,5 +105,10 @@ class GalleryFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun handleTotalPrice(totalPrice:Int) {
+        // whatever
+        total.setText("Total price = "+ totalPrice)
     }
 }

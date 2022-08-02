@@ -14,7 +14,7 @@ import com.example.myapplication2.R
 import com.example.myapplication2.ShopItemsActivity
 import com.example.myapplication2.model.Category
 
-class CategoryAdapter(private val catgoryList: ArrayList<Category>) :
+class CategoryAdapter(private val catgoryList: ArrayList<Category>,val handler: CategoryAdapter.Callbacks) :
     RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
 
@@ -43,19 +43,24 @@ class CategoryAdapter(private val catgoryList: ArrayList<Category>) :
         holder.textCategoryName.setOnClickListener {
             holder.linearLayout.setBackgroundColor(R.color.pressedColor)
 
-            val intent = Intent(holder.itemView.context, ShopItemsActivity::class.java)
+           /* val intent = Intent(holder.itemView.context, ShopItemsActivity::class.java)
 
             //Reopen the same activity with a light transition when any of the categories is pressed
             intent.putExtra("category", currentCategory)
             holder.itemView.context.startActivity(
                 intent,
                 ActivityOptions.makeSceneTransitionAnimation(activity).toBundle()
-            )
+            )*/
+            handler.handleCategoryName(currentCategory)
 
         }
     }
 
     override fun getItemCount(): Int {
         return catgoryList.size
+    }
+
+    interface Callbacks {
+        fun handleCategoryName(name:String)
     }
 }

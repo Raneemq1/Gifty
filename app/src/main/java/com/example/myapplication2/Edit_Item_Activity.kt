@@ -30,13 +30,17 @@ class Edit_Item_Activity : AppCompatActivity() {
     private lateinit var editBtn: Button
     private lateinit var updateBtn: Button
     private lateinit var ImageUri: Uri
-    var pathImage: String = ""
-    var path: String = ""
-    var sRef = FirebaseStorage.getInstance().reference
-    val ref = FirebaseDatabase.getInstance().getReference("Items")
+
+    private var sRef = FirebaseStorage.getInstance().reference
+    private val ref = FirebaseDatabase.getInstance().getReference("Items")
+
     private var shop_email_login: String = LoginActivity.shop_email
     private var shop_email_signup: String = SignUpShopActivity.shop_email
     private lateinit var email: String
+
+    private var pathImage: String = ""
+    private var path: String = ""
+    private var pressed:Int=0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +52,8 @@ class Edit_Item_Activity : AppCompatActivity() {
         );
 
         itemId = intent.getStringExtra("itemDetails").toString()
-        Toast.makeText(this, "Item id =" + itemId, Toast.LENGTH_LONG).show()
+
+
         editName = findViewById(R.id.edit_itemName)
         editPrice = findViewById(R.id.edit_itemPrice)
         editCategory = findViewById(R.id.edit_itemCategory)
@@ -57,11 +62,14 @@ class Edit_Item_Activity : AppCompatActivity() {
         editImage = findViewById(R.id.edit_item_Image)
         editBtn = findViewById(R.id.edit_item)
         updateBtn = findViewById(R.id.update_item)
+
         if (shop_email_login.isEmpty()) {
             email = shop_email_signup
         } else {
             email = shop_email_login
         }
+
+        // Fill item information
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot!!.exists()) { // check that db isn't empty
@@ -99,7 +107,9 @@ class Edit_Item_Activity : AppCompatActivity() {
         })
         editBtn.setOnClickListener {
             EditImage()
+            pressed=1
         }
+
 
         updateBtn.setOnClickListener {
             val item_name: String
@@ -109,7 +119,8 @@ class Edit_Item_Activity : AppCompatActivity() {
             var item_imageUri: String
             val item_description: String
 
-            if (editBtn.isClickable) {
+            if (pressed==1) {
+
                 val filepath = sRef?.child("Photos")?.child(Calendar.getInstance().time.toString())
 
                 if (ImageUri != null) {
@@ -119,9 +130,11 @@ class Edit_Item_Activity : AppCompatActivity() {
                     }
                 }
                 item_imageUri = filepath!!.path
-                //  item_imageUri = ImageUri.toString()
+
+                pressed=0
             } else {
                 item_imageUri = pathImage
+
             }
             item_name = editName.text.toString()
             item_price = Integer.parseInt(editPrice.text.toString())
@@ -147,6 +160,7 @@ class Edit_Item_Activity : AppCompatActivity() {
         }
     }
 
+    // Upload a new image from gallery
     private fun EditImage() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"

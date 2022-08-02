@@ -15,7 +15,7 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 
 
-class CartAdapter(private val itemsList: ArrayList<Cart>) :
+class CartAdapter(private val itemsList: ArrayList<Cart>,val handler: CartAdapter.Callbacks) :
     RecyclerView.Adapter<CartAdapter.ViewHolder>() {
     companion object {
         @JvmStatic
@@ -65,6 +65,7 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
                                 }
                             holder.cartPrice.setText(((item?.price)?.times((currentItem.requestedQuantity))).toString())
                             totalPrice += Integer.parseInt(holder.cartPrice.text.toString())//Add item price to total price
+                            handler.handleTotalPrice(totalPrice)
 
                         }
                     }
@@ -94,10 +95,10 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
         holder.cartSub.setOnClickListener {
             var quantity = Integer.parseInt(holder.cartQuantity.text.toString())
             //Check the value of quantity doesn't equal zero to continue subtracting
-            if (quantity > 0) {
+            if (quantity > 1) {
                 quantity--
             } else {
-                quantity = 0
+                quantity = 1
             }
             holder.cartQuantity.setText(quantity.toString())
             val editableCart =
@@ -122,5 +123,9 @@ class CartAdapter(private val itemsList: ArrayList<Cart>) :
 
     override fun getItemCount(): Int {
         return itemsList.size
+    }
+
+    interface Callbacks {
+       fun handleTotalPrice(total:Int)
     }
 }

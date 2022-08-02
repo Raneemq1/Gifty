@@ -14,7 +14,7 @@ import com.example.myapplication2.model.Item
 import com.example.myapplication2.model.Shop
 import com.google.firebase.database.*
 
-class ShopItemsActivity : AppCompatActivity() {
+class ShopItemsActivity : AppCompatActivity(), CategoryAdapter.Callbacks {
     lateinit var text: TextView
     private lateinit var shopName: String
     private lateinit var rv_category: RecyclerView
@@ -39,7 +39,7 @@ class ShopItemsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_shop_items)
         text = findViewById(R.id.display_shopName)
         text.setText(shopName)
-        type = intent.getStringExtra("category").toString()
+
 
         prepareData()
 
@@ -93,7 +93,7 @@ class ShopItemsActivity : AppCompatActivity() {
                             }
                         }
                     }
-                    categoryAdapter = CategoryAdapter(categoryDisplayList)
+                    categoryAdapter = CategoryAdapter(categoryDisplayList,this@ShopItemsActivity)
                     rv_category.adapter = categoryAdapter
 
                 }
@@ -165,7 +165,7 @@ class ShopItemsActivity : AppCompatActivity() {
 
                     }
 
-                    if (!type.equals("null")) {
+                    if (!type.equals("")) {
                         returnlist.addAll(typelist)
 
                     } else {
@@ -182,6 +182,17 @@ class ShopItemsActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    override fun handleCategoryName(name: String) {
+        type=name
+
+
+        prepareItem()
+
+        rv_item = findViewById(R.id.item_rv)
+        rv_item.layoutManager = LinearLayoutManager(this)
+        rv_item.setHasFixedSize(true)
     }
 
 
